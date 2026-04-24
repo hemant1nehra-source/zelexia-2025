@@ -3,7 +3,7 @@
 Official event website for **Zelexia**, the biggest DJ Night at Thapar University, held at the Main Auditorium, Patiala.
 
 ## 🌐 Live Website
-[Click here to view the live site](https://hemant1nehra.github.io/zelexia-2025)
+[Click here to view the live site](https://hemant1nehra-source.github.io/zelexia-2025)
 
 ## 📌 About
 Zelexia is a neon-themed DJ event organized by students of Thapar University.
