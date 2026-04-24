@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZELEXIA 2025 — Thapar University</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--neon-blue:#00d4ff;--neon-pink:#ff00c8;--neon-purple:#9b00ff;--deep-dark:#030a14;--dark-card:#070f1e;--mid-dark:#0a1628;--glow-blue:0 0 20px #00d4ff88,0 0 60px #00d4ff33;--glow-pink:0 0 20px #ff00c888,0 0 60px #ff00c833;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep-dark);color:#e0f0ff;font-family:'Rajdhani',sans-serif;overflow-x:hidden;cursor:crosshair;}
+  #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(3,10,20,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,212,255,0.15);}
+  .nav-logo{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:var(--neon-blue);text-shadow:var(--glow-blue);letter-spacing:0.1em;}
+  .nav-logo span{color:var(--neon-pink);text-shadow:var(--glow-pink);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:rgba(224,240,255,0.7);text-decoration:none;font-size:0.95rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s,text-shadow 0.3s;}
+  .nav-links a:hover{color:var(--neon-blue);text-shadow:var(--glow-blue);}
+  .nav-cta{background:transparent!important;border:1.5px solid var(--neon-blue);color:var(--neon-blue)!important;padding:0.5rem 1.4rem;border-radius:2px;}
+  .nav-cta:hover{background:rgba(0,212,255,0.1)!important;box-shadow:var(--glow-blue)!important;}
+  #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;z-index:1;overflow:hidden;}
+  .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:60px 60px;animation:gridPulse 8s ease-in-out infinite;}
+  @keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+  .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+  .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,0.15),transparent 70%);top:-100px;left:-150px;animation:orbFloat 10s ease-in-out infinite;}
+  .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(255,0,200,0.12),transparent 70%);bottom:-80px;right:-100px;animation:orbFloat 12s ease-in-out infinite reverse;}
+  @keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+  .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid rgba(0,212,255,0.3);background:rgba(0,212,255,0.06);color:var(--neon-blue);font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:2px;margin-bottom:1.5rem;animation:fadeUp 0.8s ease both;}
+  .badge-dot{width:6px;height:6px;background:var(--neon-blue);border-radius:50%;box-shadow:0 0 8px var(--neon-blue);animation:blink 1.5s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,16vw,13rem);line-height:0.9;letter-spacing:0.05em;margin-bottom:0.3rem;animation:fadeUp 0.9s ease 0.1s both;}
+  .title-line1{display:block;color:#fff;-webkit-text-stroke:1px rgba(255,255,255,0.2);}
+  .title-line2{display:block;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink),var(--neon-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px rgba(0,212,255,0.6));animation:gradShift 4s ease-in-out infinite alternate;}
+  @keyframes gradShift{0%{filter:drop-shadow(0 0 30px rgba(0,212,255,0.6))}100%{filter:drop-shadow(0 0 30px rgba(255,0,200,0.6))}}
+  .hero-subtitle{font-size:1.15rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(224,240,255,0.5);margin-bottom:0.8rem;animation:fadeUp 1s ease 0.2s both;}
+  .hero-meta{display:flex;gap:2.5rem;justify-content:center;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(224,240,255,0.4);margin-bottom:2.5rem;animation:fadeUp 1s ease 0.3s both;}
+  .hero-meta span{color:var(--neon-blue);}
+  .hero-btns{display:flex;gap:1.2rem;justify-content:center;animation:fadeUp 1s ease 0.4s both;}
+  .btn-primary{background:var(--neon-blue);color:var(--deep-dark);border:none;padding:0.85rem 2.5rem;font-family:'Rajdhani',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:box-shadow 0.3s,transform 0.2s;text-decoration:none;display:inline-block;}
+  .btn-primary:hover{box-shadow:0 0 30px rgba(0,212,255,0.8);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:rgba(224,240,255,0.8);border:1.5px solid rgba(224,240,255,0.2);padding:0.83rem 2.5rem;font-family:'Rajdhani',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:border-color 0.3s,color 0.3s,box-shadow 0.3s,transform 0.2s;text-decoration:none;display:inline-block;}
+  .btn-outline:hover{border-color:var(--neon-pink);color:var(--neon-pink);box-shadow:0 0 20px rgba(255,0,200,0.4);transform:translateY(-2px);}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;color:rgba(224,240,255,0.3);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;animation:fadeUp 1s ease 1s both;}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(0,212,255,0.6),transparent);animation:scrollDrop 1.5s ease-in-out infinite;}
+  @keyframes scrollDrop{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(0.5);opacity:0.5}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  section{position:relative;z-index:1;}
+  .section-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem;}
+  .section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--neon-blue);text-shadow:var(--glow-blue);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.8rem;}
+  .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(0,212,255,0.4),transparent);max-width:120px;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5.5rem);line-height:0.95;color:#fff;margin-bottom:0.5rem;}
+  .section-title .accent{color:var(--neon-blue);text-shadow:0 0 30px rgba(0,212,255,0.5);}
+  #about{background:linear-gradient(180deg,var(--deep-dark),var(--mid-dark));}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+  .about-text p{font-size:1.05rem;line-height:1.8;color:rgba(224,240,255,0.65);margin-bottom:1.2rem;}
+  .about-text p strong{color:var(--neon-blue);font-weight:700;}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .stat-card{background:var(--dark-card);border:1px solid rgba(0,212,255,0.12);padding:1.5rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+  .stat-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-4px);}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink));}
+  .stat-num{font-family:'Orbitron',monospace;font-size:2.5rem;font-weight:900;color:var(--neon-blue);line-height:1;margin-bottom:0.4rem;}
+  .stat-label{font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(224,240,255,0.4);}
+  #performances{background:var(--deep-dark);}
+  .perf-header{margin-bottom:3.5rem;}
+  .dj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;}
+  .dj-card{background:var(--dark-card);border:1px solid rgba(0,212,255,0.1);padding:2rem 1.5rem;position:relative;overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s;text-align:center;}
+  .dj-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.08),transparent 70%);opacity:0;transition:opacity 0.4s;}
+  .dj-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,0.35);}
+  .dj-card:hover::before{opacity:1;}
+  .dj-card.featured{grid-column:1 / -1;display:flex;align-items:center;gap:3rem;text-align:left;padding:2.5rem 3rem;border-color:rgba(0,212,255,0.25);background:linear-gradient(135deg,var(--dark-card),#0a0f20);}
+  .dj-card.featured::before{background:radial-gradient(ellipse at 0% 50%,rgba(0,212,255,0.1),transparent 60%);opacity:1;}
+  .dj-avatar{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-weight:900;font-size:1.2rem;flex-shrink:0;}
+  .dj-avatar.blue{background:rgba(0,212,255,0.12);color:var(--neon-blue);border:2px solid rgba(0,212,255,0.4);box-shadow:0 0 20px rgba(0,212,255,0.2);}
+  .dj-avatar.pink{background:rgba(255,0,200,0.12);color:var(--neon-pink);border:2px solid rgba(255,0,200,0.4);box-shadow:0 0 20px rgba(255,0,200,0.2);}
+  .dj-avatar.purple{background:rgba(155,0,255,0.12);color:var(--neon-purple);border:2px solid rgba(155,0,255,0.4);box-shadow:0 0 20px rgba(155,0,255,0.2);}
+  .dj-avatar.large{width:100px;height:100px;font-size:1.6rem;}
+  .dj-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;margin-bottom:0.8rem;}
+  .tag-headliner{background:rgba(0,212,255,0.15);color:var(--neon-blue);border:1px solid rgba(0,212,255,0.35);}
+  .tag-opening{background:rgba(155,0,255,0.15);color:#c860ff;border:1px solid rgba(155,0,255,0.35);}
+  .dj-name{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:0.3rem;}
+  .dj-card.featured .dj-name{font-size:2rem;}
+  .dj-genre{font-size:0.82rem;color:rgba(224,240,255,0.4);letter-spacing:0.1em;text-transform:uppercase;}
+  .dj-time{font-size:0.8rem;color:var(--neon-blue);margin-top:0.5rem;letter-spacing:0.08em;}
+  .dj-desc{font-size:0.95rem;line-height:1.7;color:rgba(224,240,255,0.55);margin-top:0.6rem;}
+  .lineup-bar{background:var(--dark-card);border:1px solid rgba(0,212,255,0.1);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;}
+  .lineup-bar-title{font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(224,240,255,0.3);white-space:nowrap;}
+  .timeline-track{flex:1;height:4px;background:rgba(0,212,255,0.1);border-radius:2px;display:flex;}
+  .timeline-slot{height:100%;border-radius:2px;}
+  .slot-blue{background:linear-gradient(90deg,rgba(0,212,255,0.5),var(--neon-blue));}
+  .slot-purple{background:linear-gradient(90deg,rgba(155,0,255,0.5),var(--neon-purple));}
+  .slot-pink{background:linear-gradient(90deg,rgba(255,0,200,0.5),var(--neon-pink));}
+  #register{background:linear-gradient(180deg,var(--deep-dark),#050c1a);}
+  .register-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+  .form-wrap{background:var(--dark-card);border:1px solid rgba(0,212,255,0.12);padding:2.5rem;position:relative;}
+  .form-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink),var(--neon-purple));}
+  .form-row{margin-bottom:1.2rem;}
+  .form-row label{display:block;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(224,240,255,0.45);margin-bottom:0.5rem;}
+  .form-row input,.form-row select{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(0,212,255,0.15);color:#e0f0ff;font-family:'Rajdhani',sans-serif;font-size:1rem;padding:0.75rem 1rem;outline:none;transition:border-color 0.3s,box-shadow 0.3s;border-radius:0;-webkit-appearance:none;}
+  .form-row select option{background:var(--dark-card);}
+  .form-row input:focus,.form-row select:focus{border-color:var(--neon-blue);box-shadow:0 0 0 1px rgba(0,212,255,0.2);}
+  .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .submit-btn{width:100%;background:linear-gradient(90deg,var(--neon-blue),#0080ff);color:var(--deep-dark);border:none;padding:1rem;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;margin-top:0.5rem;transition:box-shadow 0.3s,transform 0.2s;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);}
+  .submit-btn:hover{box-shadow:0 0 30px rgba(0,212,255,0.6);transform:translateY(-1px);}
+  .reg-info{display:flex;flex-direction:column;gap:1.5rem;}
+  .reg-info-card{background:var(--dark-card);border:1px solid rgba(0,212,255,0.1);border-left:3px solid var(--neon-blue);padding:1.3rem 1.5rem;}
+  .reg-info-card.pink{border-left-color:var(--neon-pink);}
+  .reg-info-card.purple{border-left-color:var(--neon-purple);}
+  .reg-info-card h4{font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:var(--neon-blue);margin-bottom:0.5rem;letter-spacing:0.05em;}
+  .reg-info-card.pink h4{color:var(--neon-pink);}
+  .reg-info-card.purple h4{color:#c860ff;}
+  .reg-info-card p{font-size:0.88rem;line-height:1.6;color:rgba(224,240,255,0.5);}
+  footer{background:#020810;border-top:1px solid rgba(0,212,255,0.1);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+  .footer-logo{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:rgba(0,212,255,0.5);letter-spacing:0.1em;}
+  .footer-text{font-size:0.8rem;color:rgba(224,240,255,0.2);letter-spacing:0.05em;}
+  .toast{position:fixed;bottom:2rem;right:2rem;background:var(--dark-card);border:1px solid rgba(0,212,255,0.3);border-top:2px solid var(--neon-blue);padding:1rem 1.5rem;color:var(--neon-blue);font-size:0.9rem;font-weight:600;letter-spacing:0.05em;z-index:999;transform:translateY(100px);opacity:0;transition:transform 0.4s,opacity 0.4s;pointer-events:none;}
+  .toast.show{transform:translateY(0);opacity:1;}
+  @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.about-grid{grid-template-columns:1fr;gap:2.5rem;}.dj-grid{grid-template-columns:1fr 1fr;}.dj-card.featured{grid-column:1 / -1;flex-direction:column;text-align:center;gap:1.5rem;}.register-grid{grid-template-columns:1fr;gap:2.5rem;}footer{flex-direction:column;gap:1rem;text-align:center;}}
+  @media(max-width:600px){.dj-grid{grid-template-columns:1fr;}.about-stats{grid-template-columns:1fr 1fr;}.form-grid-2{grid-template-columns:1fr;}.hero-meta{flex-direction:column;gap:0.6rem;align-items:center;}.hero-btns{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<nav>
+  <div class="nav-logo">ZEL<span>E</span>XIA</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#performances">Lineup</a></li>
+    <li><a href="#register" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>Thapar University &nbsp;·&nbsp; Main Auditorium</div>
+  <h1 class="hero-title">
+    <span class="title-line1">THE</span>
+    <span class="title-line2">ZELEXIA</span>
+  </h1>
+  <p class="hero-subtitle">Thapar's Biggest DJ Night</p>
+  <div class="hero-meta">
+    <div>Date <span>TBA 2025</span></div>
+    <div>Venue <span>Main Auditorium</span></div>
+    <div>Thapar <span>University, Patiala</span></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#register" class="btn-primary">Register Now</a>
+    <a href="#performances" class="btn-outline">View Lineup</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+</section>
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About the Event</div>
+    <h2 class="section-title">LOSE YOURSELF<br>IN THE <span class="accent">NEON</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>ZELEXIA</strong> is Thapar University's most electrifying DJ night — a full-scale neon rave experience inside the iconic Main Auditorium. Pulsating beats, laser lights, and a crowd that lives for the drop.</p>
+        <p>From opening acts to headline sets, Zelexia brings together the best of EDM, techno, and commercial dance music into one night you'll never forget. Dress to glow — neon encouraged, boring strictly prohibited.</p>
+        <p>Presented by <strong>Thapar University Student Bodies</strong>. Open to all Thapar students with valid ID.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="stat-num">6H+</div><div class="stat-label">Of Live Music</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">DJ Performances</div></div>
+        <div class="stat-card"><div class="stat-num">1K+</div><div class="stat-label">Expected Crowd</div></div>
+        <div class="stat-card"><div class="stat-num">&#8734;</div><div class="stat-label">Neon Vibes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="performances">
+  <div class="section-inner">
+    <div class="perf-header">
+      <div class="section-label">Lineup</div>
+      <h2 class="section-title">TONIGHT'S<br><span class="accent">ARTISTS</span></h2>
+    </div>
+    <div class="dj-grid">
+      <div class="dj-card featured">
+        <div class="dj-avatar blue large">DJ1</div>
+        <div>
+          <div class="dj-tag tag-headliner">&#9733; Headliner</div>
+          <div class="dj-name">DJ HEADLINER</div>
+          <div class="dj-genre">Big Room EDM &middot; Progressive House</div>
+          <div class="dj-time">10:30 PM &mdash; 12:30 AM</div>
+          <div class="dj-desc">The main act of the night. Known for earth-shattering drops and seamless mixes that keep the floor packed all night. Get ready for the biggest set Thapar has ever seen.</div>
+        </div>
+      </div>
+      <div class="dj-card">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0.8rem;">
+          <div class="dj-avatar purple">DJ2</div>
+          <div>
+            <div class="dj-tag tag-opening">Support Act</div>
+            <div class="dj-name" style="font-size:1.1rem;text-align:center;">DJ SUPPORT 1</div>
+            <div class="dj-genre">Tech House &middot; Techno</div>
+            <div class="dj-time">8:00 PM &mdash; 9:30 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="dj-card">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0.8rem;">
+          <div class="dj-avatar pink">DJ3</div>
+          <div>
+            <div class="dj-tag tag-opening">Support Act</div>
+            <div class="dj-name" style="font-size:1.1rem;text-align:center;">DJ SUPPORT 2</div>
+            <div class="dj-genre">Commercial Dance &middot; Pop EDM</div>
+            <div class="dj-time">9:30 PM &mdash; 10:30 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="dj-card">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0.8rem;">
+          <div class="dj-avatar blue">TU</div>
+          <div>
+            <div class="dj-tag tag-opening">Warm-up</div>
+            <div class="dj-name" style="font-size:1.1rem;text-align:center;">THAPAR DJ CLUB</div>
+            <div class="dj-genre">Student DJ Showcase</div>
+            <div class="dj-time">7:00 PM &mdash; 8:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lineup-bar">
+      <div class="lineup-bar-title">7 PM &#8594; 12:30 AM</div>
+      <div class="timeline-track">
+        <div class="timeline-slot slot-blue" style="width:15%"></div>
+        <div style="width:2%"></div>
+        <div class="timeline-slot slot-purple" style="width:22%"></div>
+        <div style="width:2%"></div>
+        <div class="timeline-slot slot-pink" style="width:15%"></div>
+        <div style="width:2%"></div>
+        <div class="timeline-slot slot-blue" style="width:42%"></div>
+      </div>
+      <div class="lineup-bar-title">FULL NIGHT</div>
+    </div>
+  </div>
+</section>
+<section id="register">
+  <div class="section-inner">
+    <div class="section-label">Join the Night</div>
+    <h2 class="section-title">REGISTER<br><span class="accent">NOW</span></h2>
+    <div class="register-grid">
+      <div class="form-wrap">
+        <form id="regForm">
+          <div class="form-grid-2">
+            <div class="form-row"><label>First Name</label><input type="text" placeholder="Your first name" required /></div>
+            <div class="form-row"><label>Last Name</label><input type="text" placeholder="Your last name" required /></div>
+          </div>
+          <div class="form-row"><label>Thapar Email</label><input type="email" placeholder="rollno@thapar.edu" required /></div>
+          <div class="form-row"><label>Roll Number</label><input type="text" placeholder="e.g. 102204001" required /></div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label>Branch</label>
+              <select required>
+                <option value="" disabled selected>Select Branch</option>
+                <option>Computer Science</option>
+                <option>Electronics &amp; Communication</option>
+                <option>Electrical Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+                <option>Chemical Engineering</option>
+                <option>Biotechnology</option>
+                <option>MBA / MCA</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Year</label>
+              <select required>
+                <option value="" disabled selected>Year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+                <option>PG / PhD</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" required /></div>
+          <button type="submit" class="submit-btn">Secure My Spot &#8594;</button>
+        </form>
+      </div>
+      <div class="reg-info">
+        <div class="reg-info-card"><h4>Entry Details</h4><p>Free entry for all Thapar University students with a valid college ID card. Registration is mandatory to manage capacity inside the Main Auditorium.</p></div>
+        <div class="reg-info-card pink"><h4>Dress Code</h4><p>Neon glow attire strongly encouraged! Stand out under the UV lights. Casual wear is fine — just come ready to dance all night.</p></div>
+        <div class="reg-info-card purple"><h4>Venue</h4><p>Main Auditorium, Thapar University, Patiala, Punjab. Gates open at 6:45 PM. Carry your college ID card for verification at the entrance.</p></div>
+        <div class="reg-info-card"><h4>Contact</h4><p>For queries, reach out to your college event coordinators or student body social media handles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">ZELEXIA 2025</div>
+  <div class="footer-text">Thapar University &middot; Main Auditorium &middot; Patiala, Punjab</div>
+  <div class="footer-text">Made with &#9825; for Thapar</div>
+</footer>
+<div class="toast" id="toast">&#10003; &nbsp; Registration successful! See you at Zelexia.</div>
+<script>
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+class Particle{
+  constructor(){this.reset();}
+  reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.5+0.3;this.vx=(Math.random()-0.5)*0.4;this.vy=-Math.random()*0.6-0.2;this.alpha=Math.random()*0.5+0.1;const c=['0,212,255','255,0,200','155,0,255'];this.color=c[Math.floor(Math.random()*c.length)];}
+  update(){this.x+=this.vx;this.y+=this.vy;this.alpha-=0.001;if(this.y<-10||this.alpha<=0)this.reset();}
+  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${this.alpha})`;ctx.fill();}
+}
+const particles=[];
+for(let i=0;i<120;i++)particles.push(new Particle());
+function animate(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}
+animate();
+document.getElementById('regForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4000);
+  this.reset();
+});
+const sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--neon-blue)':'';});
+});
+</script>
+</body>
+</html>
